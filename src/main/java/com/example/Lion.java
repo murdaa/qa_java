@@ -1,10 +1,13 @@
 package com.example;
 
-import java.util.List;
-
 public class Lion {
 
+    private static Feline feline;
     boolean hasMane;
+
+    public Lion(Feline feline) {
+        this.feline = feline;
+    }
 
     public Lion(String sex) throws Exception {
         if ("Самец".equals(sex)) {
@@ -16,17 +19,19 @@ public class Lion {
         }
     }
 
-    Feline feline = new Feline();
-
-    public int getKittens() {
-        return feline.getKittens();
-    }
-
     public boolean doesHaveMane() {
         return hasMane;
     }
 
-    public List<String> getFood() throws Exception {
-        return feline.getFood("Хищник");
+    public static void main(String[] args) throws Exception {
+
+        Lion lion = new Lion(feline);
+        lion.getInfoFromFeline();
+    }
+
+    public void getInfoFromFeline() throws Exception {
+        feline.getKittens();
+        feline.getFood("Хищник");
     }
 }
+

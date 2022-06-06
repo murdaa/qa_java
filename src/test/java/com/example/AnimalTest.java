@@ -28,7 +28,7 @@ public class AnimalTest { // создали тестовый класс
         }
 
         @Test
-        public void testFoodForHerbivoreAndPredator() throws Exception {
+        public void testOfAnimalGetFood() throws Exception {
             Animal animal = new Animal(); // создали экземпляр класса
             try {
                 List<String> actual = animal.getFood(kindOfAnimal); // обратились к полям тестового класса
@@ -40,7 +40,7 @@ public class AnimalTest { // создали тестовый класс
         }
 
         @Test
-        public void shouldReturnListOfFamily() {
+        public void testOfAnimalGetFamily() {
             Animal animal = new Animal(); // создали экземпляр класса
             String actual = animal.getFamily(); // вызвали проверяемый метод
             String expected = "Существует несколько семейств: заячьи, беличьи, мышиные, кошачьи, псовые, медвежьи, куньи";

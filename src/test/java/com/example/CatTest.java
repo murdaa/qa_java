@@ -21,8 +21,6 @@ public class CatTest {
 
     @Mock
     Feline feline;
-    @Mock
-    Predator predator;
 
     @Test
     public void testCatGetSound() {
@@ -30,5 +28,12 @@ public class CatTest {
         String actual = cat.getSound(); // вызвали проверяемый метод
         String expected = "Мяу";
         assertEquals(expected, actual); // сравнили ожидаемый результат с фактическим
+    }
+
+    @Test
+    public void testCatGetFood() throws Exception {
+        Cat cat = new Cat(feline); // создали экземпляр класса
+        Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба")); // создали стаб
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood("Хищник"));
     }
 }

@@ -1,4 +1,5 @@
 package com.example;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -22,21 +23,29 @@ public class AnimalTest { // создали тестовый класс
         public static Object[] getListOfMealDataForHerbivoreAndPredator() {
             return new Object[][] {
                     {"Травоядное", List.of("Трава", "Различные растения")},
-                    {"Хищник", List.of("Животные", "Птицы", "Рыба")},
-                    {"Рептилия", List.of("1", "2", "3")} // передали тестовые данные
+                    {"Хищник", List.of("Животные", "Птицы", "Рыба")}
+                    // передали тестовые данные
             };
         }
 
         @Test
-        public void testOfAnimalGetFood() throws Exception {
+        public void testOfAnimalGetFoodPositive() throws Exception {
             Animal animal = new Animal(); // создали экземпляр класса
-            try {
-                List<String> actual = animal.getFood(kindOfAnimal); // обратились к полям тестового класса
-                assertEquals(expected, actual); // сравнили ожидаемый и фактический результат
-            }
-            catch (Exception exception) {
-                System.out.println("Произошла ошибка!");
-            }
+            List<String> actual = animal.getFood(kindOfAnimal); // обратились к полям тестового класса
+            assertEquals(expected, actual); // сравнили ожидаемый и фактический результат
+        }
+
+        @Test
+        public void testOfAnimalGetFoodException() throws Exception {
+            Animal animal = new Animal();
+            String invalidKindOfAnimal = "неизвестно";
+            Exception actualException = null;
+        try {
+            animal.getFood(invalidKindOfAnimal);
+        } catch (Exception e) {
+            actualException = e;
+        }
+        Assert.assertNotNull(actualException);
         }
 
         @Test
@@ -45,5 +54,5 @@ public class AnimalTest { // создали тестовый класс
             String actual = animal.getFamily(); // вызвали проверяемый метод
             String expected = "Существует несколько семейств: заячьи, беличьи, мышиные, кошачьи, псовые, медвежьи, куньи";
             assertEquals(expected, actual); // сравнили ожидаемый результат с фактическим
-    }
+        }
 }

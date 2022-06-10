@@ -33,7 +33,8 @@ public class CatTest {
     @Test
     public void testCatGetFood() throws Exception {
         Cat cat = new Cat(feline); // создали экземпляр класса
-        Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба")); // создали стаб
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood());
+        List<String> expected = List.of("Животные", "Птицы", "Рыба");
+        Mockito.when(feline.eatMeat()).thenReturn(expected); // создали стаб
+        assertEquals(expected, cat.getFood());
     }
 }

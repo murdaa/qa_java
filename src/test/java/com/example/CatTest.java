@@ -34,6 +34,6 @@ public class CatTest {
     public void testCatGetFood() throws Exception {
         Cat cat = new Cat(feline); // создали экземпляр класса
         Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба")); // создали стаб
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood("Хищник"));
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood());
     }
 }

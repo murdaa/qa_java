@@ -34,7 +34,7 @@ public class AnimalTest { // создали тестовый класс
             List<String> actual = animal.getFood(kindOfAnimal); // обратились к полям тестового класса
             assertEquals(expected, actual); // сравнили ожидаемый и фактический результат
         }
-
+        /*
         @Test
         public void testOfAnimalGetFoodException() throws Exception {
             Animal animal = new Animal();
@@ -47,6 +47,17 @@ public class AnimalTest { // создали тестовый класс
         }
         Assert.assertNotNull(actualException);
         }
+        */
+
+        @Test(expected = Exception.class)
+        public void testOfAnimalGetFoodException() throws Exception {
+            Animal animal = new Animal();
+            String invalidKindOfAnimal = "неизвестно";
+            Exception actualException = null;
+            animal.getFood(invalidKindOfAnimal);
+            Assert.assertNotNull(actualException);
+        }
+
 
         @Test
         public void testOfAnimalGetFamily() {
